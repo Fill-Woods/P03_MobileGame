@@ -52,7 +52,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""modifier"",
                     ""id"": ""00d46d24-6e65-4ab9-b9ab-d6dfc21ca485"",
-                    ""path"": ""TouchScreen"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -24,6 +24,9 @@ public class MainMenuEvent : MonoBehaviour
         _button = _document.rootVisualElement.Q("PlayButton") as Button;
         _button.RegisterCallback<ClickEvent>(OnPlayGameClick);
 
+        _button = _document.rootVisualElement.Q("QuitButton") as Button;
+        _button.RegisterCallback<ClickEvent>(OnQuitGameClick);
+
         _menuButtons = _document.rootVisualElement.Query<Button>().ToList();
         for(int i = 0; i < _menuButtons.Count; i++)
         {
@@ -33,6 +36,7 @@ public class MainMenuEvent : MonoBehaviour
     private void OnDisable()
     {
         _button.UnregisterCallback<ClickEvent>(OnPlayGameClick);
+        _button.UnregisterCallback<ClickEvent>(OnQuitGameClick);
 
         for (int i = 0; i < _menuButtons.Count; i++)
         {
@@ -42,6 +46,14 @@ public class MainMenuEvent : MonoBehaviour
     private void OnPlayGameClick(ClickEvent evt)
     {
         SceneManager.LoadScene(_startLevelName);
+    }
+    private void OnQuitGameClick(ClickEvent evt)
+    {
+        #if UNITY_EDITOR
+               UnityEditor.EditorApplication.isPlaying = false;
+        #else
+         Application.Quit();
+        #endif
     }
 
     private void OnAllButtonsClick(ClickEvent evt)
